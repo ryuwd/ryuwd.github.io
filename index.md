@@ -1,5 +1,5 @@
 ---
-title: "Ryunosuke H. O'Neil"
+title: "Ryunosuke O'Neil"
 ---
 
 ## About Me
