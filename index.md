@@ -8,8 +8,6 @@ I am a Postgraduate (PhD) researcher at the University of [Edinburgh Particle Ph
 
 I was a Postgraduate Research student in Experimental Particle Physics at the University of Manchester, working on the [Mu2e Experiment](https://mu2e.fnal.gov) at [Fermilab](https://fnal.gov). 
 
-The running of a High Energy Physics experiment is a huge co-ordinated effort bringing many ideas, technologies (and people!) together. I enjoy the challenges that arise from a field which often demands the development of cutting-edge bespoke tools and approaches, involving the use of the latest data handling, analysis, computing, and software techniques. 
-
 
 ## Latest projects
 - **2019-20** Data-driven Alignment of the Tracker for the Mu2e Experiment with cosmic rays
@@ -20,6 +18,6 @@ You can see some of my public contributions to software over the past year on my
 
 My CERN GitLab profile is [here.](https://gitlab.cern.ch/roneil)
 
-## Blog
+## Blog Posts
 
 {% include blog_index.html %}
