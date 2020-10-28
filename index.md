@@ -20,7 +20,6 @@ You can see some of my public contributions to software over the past year on my
 
 My CERN GitLab profile is [here.](https://gitlab.cern.ch/roneil)
 
-
-## Latest blog posts
+## Blog
 
 {% include _layouts/blog_index.html %}
