@@ -22,4 +22,4 @@ My CERN GitLab profile is [here.](https://gitlab.cern.ch/roneil)
 
 ## Blog
 
-{% include _layouts/blog_index.html %}
+{% include blog_index.html %}
