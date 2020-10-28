@@ -6,6 +6,8 @@ layout: post
 permalink: /first-post/
 categories:
   - Test
+tags:
+  - test
 ---
 
 Quick test of blog features. Thanks for reading!
