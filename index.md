@@ -19,3 +19,8 @@ The running of a High Energy Physics experiment is a huge co-ordinated effort br
 You can see some of my public contributions to software over the past year on my [GitHub profile](https://github.com/ryuwd).
 
 My CERN GitLab profile is [here.](https://gitlab.cern.ch/roneil)
+
+
+## Latest blog posts
+
+{% include _layouts/blog_index.html %}
