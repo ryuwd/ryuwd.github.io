@@ -1,6 +1,43 @@
-theme: jekyll-theme-minimal
-
+name: "Ryunosuke O'Neil"
 title: "Ryunosuke O'Neil"
-description: "Postgraduate Researcher"
-logo: "https://avatars1.githubusercontent.com/u/56410978?s=460&u=f045304693e5e5b5bca2f89182a90501a9fcbf44&v=4"
+description: Particle Physics PhD candidate
+meta_description: "Ryunosuke O'Neil | PhD researcher"
 
+aboutPage: true
+
+markdown: kramdown
+highlighter: rouge
+
+plugins: [jekyll-paginate]
+paginate: 20
+domain_name: 'http://roneil.xyz'
+google_analytics: 'UA-XXXXXXXX-X'
+disqus: false
+disqus_shortname: 'your-disqus-shortname'
+
+# Details for the RSS feed generator
+url:            'http://roneil.xyz'
+author:         "Ryunosuke O'Neil"
+authorTwitter:  'ryunoneil'
+
+permalink:       /:year/:title/
+
+defaults:
+    -
+        scope:
+            path: "" # empty string for all files
+            type: pages
+        values:
+            layout: default
+    -
+        scope:
+            path: "" # empty string for all files
+            type: posts
+        values:
+            layout: post
+    -
+        scope:
+            path: ""
+            type: drafts
+        values:
+            layout: post

@@ -1,0 +1,16 @@
+---
+title:  "Test Post!"
+date:   2021-03-02 15:00:00
+description: A test blog post
+---
+
+A test post. Here's some code:
+
+{% highlight ruby %}
+def print_hi(name)
+  puts "Hi, #{name}"
+end
+print_hi('Dave')
+#=> prints 'Hi, Dave' to STDOUT.
+{% endhighlight %}
+
