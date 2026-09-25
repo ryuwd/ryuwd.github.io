@@ -1,0 +1,208 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProjectChart from '../../components/ProjectChart.astro';
+import Diagram from '../../components/Diagram.astro';
+---
+
+<Base
+  title="Projects · Ryunosuke O'Neil"
+  description="Selected work: LHCb Analysis Productions, DiracX and CWL, autonomous operations tooling, and more."
+>
+  <h1>Projects</h1>
+
+  <section class="project" id="analysis-productions">
+    <h2>LHCb Analysis Productions</h2>
+    <p class="stack">
+      Python · FastAPI · React · TypeScript · Celery · MySQL · SQLAlchemy · Kubernetes
+    </p>
+    <p>
+      Data collected by LHCb requires further processing to be useful for physics analysis,
+      which depends on the kind of physics an analyst is looking for and/or trying to measure.
+    </p>
+
+    <Diagram
+      name="analysis-workflow"
+      width={2600}
+      height={528}
+      alt="Four stages left to right: detector output, huge and needing filtering; an analyst asking 'where's my decay?'; the code they wrote, which finds, filters and calculates what they need; and the resulting dataset, a table with one row per decay candidate."
+      caption="The LHCb analyst user story: what every LHCb analysis needs before the physics can start."
+    />
+
+    <p>
+      Not too long ago, an LHCb analyst would produce an analysis dataset by
+      submitting their own jobs to <b>the Worldwide LHC Computing Grid</b> (WLCG) or simply the Grid (a collection of computing centres which execute jobs a bit like in a batch system), and effectively babysitting them: monitoring
+      progress, diagnosing failures job by job, resubmitting, and preserving
+      the outputs and configuration by hand. It was the most time-consuming
+      and error-prone part of starting an analysis, and when LHC Run 3 multiplied
+      the data rates this became completely unworkable.
+    </p>
+
+    <Diagram
+      name="grid-babysitting"
+      width={2600}
+      height={556}
+      alt="Four stages left to right: an analyst submitting their own jobs; those jobs running at Grid computing sites, where two of the nine have failed because untested configurations waste the allocated resources; the analyst babysitting them, watching progress and resubmitting while failures often go ignored; and the outputs and configuration kept by hand, as a stack of papers labelled 'v3_final?'."
+      caption="Before Analysis Productions: submit, watch, resubmit, and keep track of it all yourself."
+    />
+
+    <p>
+      Analysis Productions replaces that with a declarative, centrally managed
+      service: the analyst describes what they need in a short YAML file, and
+      the platform handles validation, CI testing (using real Grid jobs), submission,
+      monitoring, and preservation, with provenance kept end to end so that
+      any dataset can be traced back to exactly how it was made.
+    </p>
+
+    <Diagram
+      name="analysis-productions-service"
+      width={2600}
+      height={485}
+      alt="A short YAML file, in which the analyst describes what they need rather than how to run it, feeds a centrally managed service that validates, tests in CI with real Grid jobs, submits, monitors and preserves; out comes the dataset, produced and preserved, ready to analyse."
+      caption="The analyst declares what they need; the service and operators handle the rest."
+    />
+
+    <p>
+      The platform
+      grew out of LHCb's earlier working-group productions system and was
+      already running when I joined the collaboration back in 2020. Since then, I have worked on much of the API
+      backend and (completely new, overhauled) web frontend LbAPWeb (see below), and I remain one of the
+      platform's core developers and maintainers.
+    </p>
+    <p>
+      It has been hugely successful. Analysis Productions is the official
+      processing route for LHCb's Run 3 data, used by hundreds of analysts and
+      open to the whole collaboration. As of August 2026 it had read 1.8 exabytes of collision
+      data and returned 7.6 PB of analysis-ready datasets, a reduction of
+      more than 200 to 1. Chris Burr presented the platform at CHEP 2026, as <a
+        href="https://indico.cern.ch/event/1471803/contributions/6970826/"
+        >an exascale analysis data processing and management service for
+        LHCb</a
+      >.
+    </p>
+    <ProjectChart name="ap-growth" />
+    <ProjectChart name="ap-input" />
+    <p class="links">
+      <a href="https://lhcb-productions.web.cern.ch">Application</a>
+      <a href="https://gitlab.cern.ch/lhcb-dpa/analysis-productions/LbAPI"
+        >CERN GitLab</a
+      >
+    </p>
+  </section>
+
+  <section class="project" id="diracx-cwl">
+    <h2>DiracX / CWL integration</h2>
+    <p class="stack">Python · CWL · DiracX</p>
+    <p>
+      DIRAC has scheduled LHCb's grid workloads for two decades, and its job
+      descriptions have always been bespoke, closed to the wider ecosystem of
+      workflow tooling. For DiracX, its successor, we are adopting the Common
+      Workflow Language, so that a physics workload is described in an open,
+      portable standard rather than an in-house dialect.
+    </p>
+    <p>
+      I presented our strategy at CHEP 2026, as <a
+        href="https://indico.cern.ch/event/1471803/contributions/6967104/"
+        >Aligning DIRAC Workflows with CWL</a
+      >.
+    </p>
+    <p class="links">
+      <a href="https://github.com/DIRACGrid/diracx">DiracX</a>
+      <a href="https://github.com/common-workflow-language/cwltool">cwltool</a>
+    </p>
+  </section>
+
+  <section class="project" id="operations-service">
+    <h2>Autonomous operations service</h2>
+    <p class="stack">Python · FastAPI · Celery · MySQL</p>
+    <p>
+      Operating a system that runs LHCb's offline processing means diagnosing
+      job failures at a rate no person can sustain by reading logs. What
+      existed was a log-analysis script that worked well for exactly one
+      careful expert at a time: genuinely useful, but unshareable, and with
+      nothing to stop a mistyped action doing real damage.
+    </p>
+    <p>
+      I turned it into a concurrency-safe service a team of operators can work with: adapting the
+      root-cause grouping across thousands of jobs, and exposing it clearly through an operations dashboard,
+      and a carefully commissioned-action lifecycle in which proposed interventions
+      require operator approval, run through guarded executors, and are
+      continuously reconciled against the actual state of the system. Nothing
+      acts unsupervised, and everything leaves an audit trail.
+    </p>
+  </section>
+
+  <section class="project" id="lbagents">
+    <h2>LbAgents: a proof-of-concept agentic toolkit for LHCb Computing Operations</h2>
+    <p class="stack">Python · LangGraph · MCP · OpenSearch · Langfuse</p>
+    <p>
+      Operations generates a lot of repetitive diagnostic work: a CI job
+      fails, somebody reads the log, recognises the shape of the problem, and
+      writes much the same advice they wrote last month. LbAgents is a set of
+      LangGraph workflows that take the first pass: diagnosing CI failures,
+      with single-agent and multi-agent variants, investigating stuck
+      productions, and answering support questions arriving over Mattermost.
+    </p>
+    <p>
+      The design decisions matter more here than the choice of model or even the workflows themselves (they will require optimisations regardless). Graph
+      factories return uncompiled graphs, so the host application owns
+      checkpointing. Tools arrive as parameters rather than hardcoded,
+      discovered over MCP at runtime, so adding a workflow needs no change in
+      the host. Every write tool, whether that is posting a review or opening
+      an issue, sits behind a human-in-the-loop interrupt that shows the
+      pending call to a person before it runs. Nothing an agent decides
+      reaches GitLab unreviewed.
+    </p>
+  </section>
+
+  <section class="project" id="lbfluka">
+    <h2>lbfluka</h2>
+    <p class="stack">Python · LHCbDIRAC · FLUKA · pixi</p>
+    <p>
+      FLUKA is a long-established Fortran Monte Carlo code, and running a
+      campaign with it used to mean hand-maintained shell scripts: build the
+      binary, stage the data, launch the jobs, collect whatever comes back.
+      That works for one person running one study. It does not survive
+      thousands of grid jobs, several people, and a result somebody will want
+      to reproduce in two years.
+    </p>
+    <p>
+      lbfluka allows one to express this workflow instead as DIRAC transformations while carefully adapting to FLUKA's constraints. A campaign is declared in a YAML
+      file and submitted from a merge request; the tooling packages the
+      compiled binary and its data, fans the work out across thousands of grid
+      nodes with deterministic per-job seeds, merges the outputs, and registers
+      the results in the bookkeeping so every file can be traced back to the
+      configuration that produced it. The physics is FLUKA's. The engineering
+      is making it reproducible at scale, and the same shape as every other
+      production the collaboration runs.
+    </p>
+    <p class="links">
+      <a href="https://gitlab.cern.ch/lhcb-simulation/lbfluka">CERN GitLab</a>
+    </p>
+  </section>
+
+  <section class="project" id="lbapweb">
+    <h2>LbAPWeb</h2>
+    <p class="stack">React · TypeScript</p>
+    <p>
+      The web application at the centre of the Run 3 data-processing workflow:
+      where analysts watch their CI tests, debug failing jobs, browse their
+      n-tuples interactively, and manage samples through their lifecycle. I
+      built it during my PhD to replace the previous interface, motivated
+      directly by my own experience of validating productions as an analyst.
+    </p>
+    <p>
+      It has since been adopted well beyond its original scope, including as
+      the frontend for LHCb's simulation-request system. Resource-usage plots
+      introduced through this work have led to multiple memory-leak
+      discoveries in production workflows, and built-in n-tuple browsing means
+      checking an output no longer requires downloading it.
+    </p>
+    <p class="links">
+      <a href="https://lhcb-productions.web.cern.ch">Application</a>
+      <a href="https://gitlab.cern.ch/lhcb-dpa/analysis-productions/LbAPWeb"
+        >CERN GitLab</a
+      >
+    </p>
+  </section>
+
+</Base>

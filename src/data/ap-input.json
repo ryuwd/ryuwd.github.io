@@ -1,0 +1,148 @@
+{
+  "title": "Data processed by Analysis Productions",
+  "caption": "Cumulative input read by Analysis Productions jobs. Counts successful jobs only, and a file read by several jobs counts each time.",
+  "yLabel": "Input processed, cumulative (EB)",
+  "unit": "EB",
+  "series": [
+    {
+      "date": "2023-10-31",
+      "value": 0.005
+    },
+    {
+      "date": "2023-11-30",
+      "value": 0.007
+    },
+    {
+      "date": "2023-12-31",
+      "value": 0.01
+    },
+    {
+      "date": "2024-01-31",
+      "value": 0.013
+    },
+    {
+      "date": "2024-02-29",
+      "value": 0.019
+    },
+    {
+      "date": "2024-03-31",
+      "value": 0.025
+    },
+    {
+      "date": "2024-04-30",
+      "value": 0.033
+    },
+    {
+      "date": "2024-05-31",
+      "value": 0.061
+    },
+    {
+      "date": "2024-06-30",
+      "value": 0.112
+    },
+    {
+      "date": "2024-07-31",
+      "value": 0.198
+    },
+    {
+      "date": "2024-08-31",
+      "value": 0.256
+    },
+    {
+      "date": "2024-09-30",
+      "value": 0.341
+    },
+    {
+      "date": "2024-10-31",
+      "value": 0.408
+    },
+    {
+      "date": "2024-11-30",
+      "value": 0.489
+    },
+    {
+      "date": "2024-12-31",
+      "value": 0.522
+    },
+    {
+      "date": "2025-01-31",
+      "value": 0.579
+    },
+    {
+      "date": "2025-02-28",
+      "value": 0.644
+    },
+    {
+      "date": "2025-03-31",
+      "value": 0.678
+    },
+    {
+      "date": "2025-04-30",
+      "value": 0.699
+    },
+    {
+      "date": "2025-05-31",
+      "value": 0.73
+    },
+    {
+      "date": "2025-06-30",
+      "value": 0.763
+    },
+    {
+      "date": "2025-07-31",
+      "value": 0.798
+    },
+    {
+      "date": "2025-08-31",
+      "value": 0.833
+    },
+    {
+      "date": "2025-09-30",
+      "value": 0.867
+    },
+    {
+      "date": "2025-10-31",
+      "value": 0.92
+    },
+    {
+      "date": "2025-11-30",
+      "value": 0.983
+    },
+    {
+      "date": "2025-12-31",
+      "value": 1.054
+    },
+    {
+      "date": "2026-01-31",
+      "value": 1.132
+    },
+    {
+      "date": "2026-02-28",
+      "value": 1.205
+    },
+    {
+      "date": "2026-03-31",
+      "value": 1.302
+    },
+    {
+      "date": "2026-04-30",
+      "value": 1.407
+    },
+    {
+      "date": "2026-05-31",
+      "value": 1.506
+    },
+    {
+      "date": "2026-06-30",
+      "value": 1.596
+    },
+    {
+      "date": "2026-07-31",
+      "value": 1.708
+    },
+    {
+      "date": "2026-08-31",
+      "value": 1.797
+    }
+  ]
+}

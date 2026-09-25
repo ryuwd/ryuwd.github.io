@@ -1,0 +1,33 @@
+---
+import Base from './Base.astro';
+import { formatDate, type Post } from '../lib/posts';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, tags, draft } = post.data;
+---
+
+<Base title={title} description={description}>
+  <article>
+    <h1>{title}</h1>
+    <p class="post-meta">
+      <time datetime={pubDate.toISOString().slice(0, 10)}>
+        {formatDate(pubDate)}
+      </time>
+      {draft && <strong> · draft</strong>}
+      {
+        tags.length > 0 && (
+          <span class="post-tags">
+            {tags.map((tag) => (
+              <span>#{tag}</span>
+            ))}
+          </span>
+        )
+      }
+    </p>
+    <slot />
+  </article>
+</Base>

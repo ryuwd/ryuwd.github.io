@@ -1,0 +1,47 @@
+---
+import { renderLineChart, type ChartSeries } from '../lib/charts';
+
+interface Props {
+  name: string;
+}
+
+const { name } = Astro.props;
+
+// Eagerly import whatever data files exist; absent file → render nothing.
+const dataFiles = import.meta.glob<{ default: ChartSeries }>(
+  '../data/*.json',
+  { eager: true },
+);
+const entry = dataFiles[`../data/${name}.json`];
+const data = entry?.default;
+const svg = data ? renderLineChart(data) : null;
+---
+
+{
+  data && svg && (
+    <figure class="chart">
+      <figcaption class="chart-title">{data.title}</figcaption>
+      <Fragment set:html={svg} />
+      {data.caption && <figcaption>{data.caption}</figcaption>}
+      <details>
+        <summary>Data table</summary>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>{data.yLabel}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.series.map((d) => (
+              <tr>
+                <td>{d.date}</td>
+                <td>{d.value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </details>
+    </figure>
+  )
+}

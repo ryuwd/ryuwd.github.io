@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getPublishedPosts, formatDate } from '../../lib/posts';
+
+const posts = await getPublishedPosts();
+---
+
+<Base
+  title="Writing · Ryunosuke O'Neil"
+  description="Technical writing on distributed data processing, operations tooling, and software engineering."
+>
+  <h1>Writing</h1>
+  {
+    posts.length === 0 ? (
+      <p class="muted">Nothing published here yet. The first posts are on their way.</p>
+    ) : (
+      <ul class="post-list">
+        {posts.map((post) => (
+          <li>
+            <time datetime={post.data.pubDate.toISOString().slice(0, 10)}>
+              {formatDate(post.data.pubDate)}
+            </time>
+            <a href={`/writing/${post.id}/`}>{post.data.title}</a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</Base>

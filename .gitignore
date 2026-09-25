@@ -1,2 +1,15 @@
+# Astro
+dist/
+.astro/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# macOS
+.DS_Store
+
+# Jekyll leftovers (until removal)
 vendor
 .bundle
+_site

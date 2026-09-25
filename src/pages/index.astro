@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+
+const links = [
+  { href: 'https://github.com/ryuwd', label: 'GitHub' },
+  { href: 'https://gitlab.cern.ch/roneil', label: 'CERN GitLab' },
+  { href: 'https://www.linkedin.com/in/ryunoneil/', label: 'LinkedIn' },
+];
+
+const selectedWork = [
+  {
+    href: '/projects/#analysis-productions',
+    name: 'LHCb Analysis Productions',
+    blurb:
+      'Self-service data processing for hundreds of LHCb physicists; the official route for LHCb Run 3 data.',
+  },
+  {
+    href: '/projects/#operations-service',
+    name: 'Autonomous operations service',
+    blurb:
+      'From single-user log-analysis script to concurrency-safe service with guarded, audited interventions.',
+  },
+  {
+    href: '/projects/#lbagents',
+    name: 'LbAgents: Automatic Agentic Workflows in LHCb',
+    blurb:
+      'Extensible, pluggable, and testable proof-of-concept agentic workflows using LangGraph that diagnose CI failures and stuck productions, with guardrails: every write action is gated on human review. Plugs into infrastructure and highly configurable with existing MCP or user-specified tools.',
+  },
+  {
+    href: '/projects/#diracx-cwl',
+    name: 'DiracX / CWL integration',
+    blurb:
+      'Open, portable workflow descriptions for the next generation of the DIRAC grid middleware.',
+  },
+];
+---
+
+<Base title="Ryunosuke O'Neil">
+  <h1>
+    I work on the data-processing infrastructure behind the LHCb experiment at
+    CERN.
+  </h1>
+  <p>
+    I'm a software engineer at CERN's LHCb Computing Section, working on the systems that
+    transform petabytes of raw LHC collision data into datasets that physicists use to make discoveries and observations about our Universe. I started out as a physicist myself: my PhD produced the <a
+      href="https://inspirehep.net/literature/2894871">observation of a new charmed
+      baryon</a>, and the tooling and central infrastructure I wished I'd had
+    during that time became the reality of what I do now. These days that means a few things, including but not limited to: <a
+      href="/projects/#analysis-productions">Analysis Productions</a>, the
+    hugely successful platform behind LHCb's Run 3 dataset production, and CWL-based
+    workflows for DiracX, the next generation of the DIRAC grid middleware.
+  </p>
+  <p>
+    {
+      links.map((link, i) => (
+        <>
+          <a href={link.href}>{link.label}</a>
+          {i < links.length - 1 && ' · '}
+        </>
+      ))
+    }
+  </p>
+
+  <h2>Selected work</h2>
+  <ul class="work-list">
+    {
+      selectedWork.map((work) => (
+        <li>
+          <a href={work.href}>{work.name}</a>
+          <span>{work.blurb}</span>
+        </li>
+      ))
+    }
+  </ul>
+  <p><a href="/projects/">All projects</a></p>
+
+</Base>

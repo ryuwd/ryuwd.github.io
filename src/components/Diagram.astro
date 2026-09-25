@@ -1,0 +1,44 @@
+---
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+
+interface Props {
+  name: string;
+  alt: string;
+  caption?: string;
+  width: number;
+  height: number;
+}
+
+const { name, alt, caption, width, height } = Astro.props;
+
+// A `<name>-dark.png` sitting beside the light one is picked up automatically;
+// until it exists the light diagram is used in both themes. Resolved against
+// the build's working directory, which is the project root.
+const hasDark = existsSync(
+  join(process.cwd(), 'public', 'images', `${name}-dark.png`),
+);
+---
+
+<figure class="figure-bleed">
+  <div class="figure-scroll">
+    <picture>
+      {
+        hasDark && (
+          <source
+            media="(prefers-color-scheme: dark)"
+            srcset={`/images/${name}-dark.png`}
+          />
+        )
+      }
+      <img
+        src={`/images/${name}.png`}
+        alt={alt}
+        width={width}
+        height={height}
+        loading="lazy"
+      />
+    </picture>
+  </div>
+  {caption && <figcaption class="container">{caption}</figcaption>}
+</figure>

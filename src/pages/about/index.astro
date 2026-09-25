@@ -1,0 +1,84 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base
+  title="About · Ryunosuke O'Neil"
+  description="Software engineer at CERN working on distributed data processing for the LHCb experiment; formerly a PhD student at Edinburgh."
+>
+  <h1>About</h1>
+  <p>
+    I'm a software engineer at CERN, in the LHCb Computing Section, working on the
+    distributed data-processing infrastructure and software stack that
+    supports the <a href="http://lhcb-public.web.cern.ch">LHCb experiment</a> and
+    its physicists. In practice that means the <a
+      href="/projects/#analysis-productions">Analysis Productions</a> platform,
+    CWL-based workflows for the <a href="https://diracx.diracgrid.org/en/latest/">DiracX grid middleware</a>, and the
+    operations tooling that keeps thousands of grid jobs running concurrently.
+  </p>
+  <figure class="about-photo">
+    <img
+      src="/images/chep2026-bangkok.jpg"
+      alt="Ryunosuke O'Neil presenting at CHEP 2026 in Bangkok, holding a microphone in front of a session backdrop."
+      width="900"
+      height="805"
+      loading="lazy"
+    />
+    <figcaption>Presenting at CHEP 2026</figcaption>
+  </figure>
+  <p>
+    I came to software engineering through physics. During my PhD in the <a
+      href="https://www.ph.ed.ac.uk/particle-physics-experiment"
+      >Particle Physics Experiment group</a
+    > at the University of Edinburgh, I led a search for excited charmed
+    baryons over LHCb's Run 2 dataset, which resulted in the observation of a
+    new state, the Ξ<sub>c</sub>(2923)<sup>+</sup>, published in <a
+      href="https://inspirehep.net/literature/2894871">Physical Review Letters</a>. Producing the n-tuples for
+    that analysis made me an
+    intensive user of the very tooling I would later rebuild: alongside the
+    physics, I created <a href="/projects/#lbapweb">LbAPWeb</a>, the web
+    application LHCb analysts now use to create and manage their datasets.
+    The motivation came directly from knowing, first-hand, where the
+    frustrations were.
+  </p>
+
+  <p>
+    Earlier, I spent time closer to the detectors: two testbeam campaigns at
+    the DESY-II facility in 2022, evaluating irradiated HV-MAPS sensors for
+    the LHCb MightyPix project, and before that a Masters at the University of
+    Manchester on data-driven alignment of the tracker for the <a
+      href="https://mu2e.fnal.gov">Mu2e experiment</a> at <a
+      href="https://fnal.gov">Fermilab</a>, using cosmic ray simulations to test it.
+  </p>
+  <p>
+    Most of my work happens in the open; You can see what I've been up to recently on my <a
+      href="https://github.com/ryuwd">GitHub</a> and <a
+      href="https://gitlab.cern.ch/roneil">CERN GitLab</a>.
+  </p>
+
+  <h2>Theses and publications</h2>
+  <ul>
+    <li>
+      <strong>2025</strong> LHCb-PAPER-2024-055: <a
+        href="https://doi.org/10.1103/gghl-m6fm"
+        >Observation of a New Charmed Baryon Decaying to Ξ<sub>c</sub><sup
+          >+</sup
+        > π<sup>−</sup> π<sup>+</sup></a
+      > (<a href="https://inspirehep.net/literature/2894871">Phys. Rev. Lett. 135, 161901</a>)
+    </li>
+    <li>
+      <strong>2024</strong> PhD thesis: <a
+        href="https://doi.org/10.17181/pqbmp-tpt23"
+        >Observation of a new charmed baryon, testbeam studies for Upgrade-II,
+        and an enhanced analysis experience for the LHCb experiment</a
+      >
+    </li>
+    <li>
+      <strong>2020</strong> Data-driven Alignment of the Tracker for the
+      Mu2e Experiment with cosmic rays (<a
+        href="https://inspirehep.net/literature/1849484"
+        >FERMILAB-MASTERS-2020-07</a
+      >)
+    </li>
+  </ul>
+</Base>

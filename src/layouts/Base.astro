@@ -1,0 +1,86 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Ryunosuke O'Neil, software engineer at CERN working on distributed data processing for the LHCb experiment.",
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const currentPath = Astro.url.pathname;
+const ogImage = new URL('images/chep2026-bangkok.jpg', Astro.site);
+
+const navLinks = [
+  { href: '/projects/', label: 'Projects' },
+  { href: '/about/', label: 'About' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ryunosuke O'Neil" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#ffffff"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#101114"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="container">
+        <a class="site-name" href="/">Ryunosuke O'Neil</a>
+        <div class="nav-links">
+          {
+            navLinks.map((link) => (
+              <a
+                href={link.href}
+                aria-current={
+                  currentPath.startsWith(link.href) ? 'page' : undefined
+                }
+              >
+                {link.label}
+              </a>
+            ))
+          }
+        </div>
+      </nav>
+    </header>
+    <main class="container">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <span>© {new Date().getFullYear()} Ryunosuke O'Neil</span>
+        <span>
+          <a href="https://github.com/ryuwd">GitHub</a> · <a
+            href="https://gitlab.cern.ch/roneil">CERN GitLab</a> · <a
+            href="https://www.linkedin.com/in/ryunoneil/">LinkedIn</a>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>
